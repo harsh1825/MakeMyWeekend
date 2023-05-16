@@ -1,0 +1,88 @@
+.addusertopdiv{
+    background: linear-gradient(to bottom right, #0B2447, #57BC90);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat; 
+    background-attachment: fixed;
+    height: 100vh;
+}
+.adduserform{
+    justify-content: center;
+    margin-top: 10px;
+    text-align: center;
+    
+}
+.adduserinput{
+    margin: 10px;
+    color: rgb(255, 253, 253);
+    padding-left: 10px;
+}
+
+.updateuseremailinput{
+    margin: 10px;
+    pointer-events: none;
+    background-color: rgba(0, 0, 0, 0.159);
+}
+.adduseremailinput{
+    margin: 10px;
+}
+.adduserheading{
+    color: white;
+    text-align: center;
+    padding-top: 100px;
+}
+.adduserheading::after{
+    content: "ADD USER";
+}
+.updateuserheading{
+    color: white;
+    text-align: center;
+    padding-top: 100px;
+}
+.updateuserheading::after{
+    content: "EDIT USER";
+}
+.adduserbutton{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 20px;
+    padding-left: 60px;
+    padding-right: 100px;
+}
+.adduserbutton:hover{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 20px;
+    padding-left: 60px;
+    padding-right: 100px;
+}
+.errmsg{
+    margin-left: 570px;
+}
+.cancelbutton{
+    background-color: rgba(242, 10, 10, 0.806);
+    width: 20px;
+    padding-left: 55px;
+    padding-right: 100px;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+.cancelbutton:hover{
+    background-color: rgba(199, 0, 0, 0.806);
+    width: 20px;
+    padding-left: 55px;
+    padding-right: 100px;
+    margin-top: 20px;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+
+}
+.buttons{
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}
+
+

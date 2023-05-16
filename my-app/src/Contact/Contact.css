@@ -1,0 +1,173 @@
+/* .icon1 {
+  width: 80px;
+  display: block;
+  float: left;
+  padding-left: 150px;
+  padding-right: 150px;
+  margin-bottom: 10px;
+  margin-top: 0px;
+
+}
+
+.icon2 {
+  width: 50px;
+  display: block;
+  float: left;
+  padding-left: 150px;
+  padding-right: 150px;
+  margin-bottom: 10px;
+  margin-top: 0px;
+
+}
+
+.icon3 {
+  width: 60px;
+  height: 60px;
+  display: block;
+  float: left;
+  padding-left: 150px;
+  padding-right: 150px;
+  margin-bottom: 10px;
+  margin-top: 0px;
+
+} */
+
+.icons {
+
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  color: #fff;
+  padding: 50px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 900px;
+}
+
+.class {
+  background: linear-gradient(to bottom right, #0B2447, #57BC90);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  
+  
+
+}
+
+.icon-container {
+  text-align: center;
+}
+
+.icon-text {
+  display: block;
+  font-size: 20px;
+  /* margin-top: 10px; */
+  color: #fff;
+}
+
+.small {
+  display: block;
+  font-size: 15px;
+  color: #fff;
+  margin-bottom: 25px;
+  
+}
+
+.head {
+  font-size: 40px;
+  border-bottom: 2px solid #fff;
+  padding-bottom: 8px;
+  color: #fff;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+
+
+}
+
+
+
+.addresss {
+  color: #fff;
+}
+
+.addresss2 {
+  color: #fff;
+  width: 400px;
+  display: block;
+  margin-right: 30px;
+  margin-left: 30px;
+  padding-top: 0;
+}
+
+.right-side {
+  display: flex;
+  align-items: center;
+  margin-top: 40px;
+  justify-content: center;
+  flex-direction: column;
+  /* background-color: #00000033; */
+  width: 500px;
+  height: 500px;
+  margin-left: 20px;
+}
+
+.left-side {
+  display: flex;
+  align-items: center;
+  margin-top: 40px;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #0432407e;
+  width: 450px;
+  height: 500px;
+}
+
+.flex{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.myForm3{
+  
+  width: 400px;
+  bottom: 5%;
+  position: relative;
+  padding-bottom: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+  
+}
+
+.submitB{
+  background: #05475b;
+
+}
+.submitB:hover{
+  background: #043240;
+
+}
+
+.message{
+   width: 314px;
+  height: 120px;
+  padding: 10px;
+  border: none;
+  border-bottom: 2px solid white;
+  border-radius: 0px;
+  background-color: transparent;
+  color: white;
+  width: 300px;
+  resize: none;
+}
+
+.form_input1{
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.ping{
+  margin-top: 100px;
+}

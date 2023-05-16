@@ -1,0 +1,304 @@
+.row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+
+}
+
+.search2 {
+    padding: 10px;
+    border-radius: 0px;
+    border: 1px solid white;
+    background-color: #8080801e;
+    color: white;
+    width: 250px;
+    height: 9px;
+    margin-left: 20px;
+    margin-top: 0px;
+
+}
+
+.small-container {
+    width: 1400px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+.small-container2 {
+    width: 1100px;
+    margin: auto;
+    padding: 0 25px;
+}
+
+.col-4 {
+    flex-basis: 40%;
+    padding: 20px;
+    width: 150px;
+    margin-bottom: 50px;
+    background-color: #ffffff31;
+    border-radius: 15px;
+    padding-top: 10px;
+
+}
+
+.weekendideas {
+    padding-right: 0px;
+}
+
+h4 {
+    color: rgb(247, 247, 170);
+    font-weight: normal;
+}
+
+.col-4 p {
+    font-size: 14px;
+    color: #fff;
+}
+
+.row-2 {
+    /* justify-content: space-between; */
+    margin: 50px 60px 20px;
+    /* width: 1200px; */
+
+}
+
+.outerproducttitle {
+    margin-top: 5px;
+
+}
+
+.feedtopdiv {
+    background: linear-gradient(to bottom right, #0B2447, #57BC90);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+    
+}
+
+.topsort {
+    color: #fff;
+    margin-bottom: 25px;
+    width: 130px;
+    margin-top: 13px;
+}
+
+.category {
+    border: 1px solid black;
+    margin-bottom: 25px;
+    height: 32px;
+    color: black;
+    width: 470px;
+    margin-left: 40px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.plusicon {
+    margin-top: 0px;
+    text-align: center;
+}
+
+.topsort2 {
+    color: black;
+}
+
+.category2 {
+    color: black;
+}
+
+.byuser {
+    padding-top: 15px;
+    width: 340px;
+}
+
+.likeicon {
+    /* margin-top: 5px; */
+    color: white;
+    margin-left: 20px;
+    margin-right: 3px;
+
+}
+.like-count{
+    color: white;
+    font-size: 15px;
+    margin-right: 20px;
+}
+
+.commenticon {
+    display: block;
+    color: white;
+    /* margin-top: 20px; */
+
+}
+
+.price {
+    margin-left: 0px;
+
+
+}
+
+.userpostdetail {
+    display: flex;
+}
+
+.feedicons {
+    display: flex;
+    margin-top: 45px;
+
+}
+
+.postidea {
+    width: 130px;
+    padding: 0;
+    height: 40px;
+    margin-bottom: 10px;
+    border-radius: 0;
+    background-color: #05475b;
+    margin-top: 0;
+
+}
+
+.postidea:hover {
+    background-color: #043240;
+    width: 130px;
+    padding: 0;
+    height: 40px;
+    margin-bottom: 10px;
+    border-radius: 0;
+    margin-top: 0;
+
+}
+
+.addidea {
+    border: 1px solid black;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    height: 50px;
+    color: black;
+    width: 450px;
+    padding-top: 0;
+}
+
+.addidea::placeholder {
+    color: rgba(0, 0, 0, 0.587);
+}
+
+.addidea2 {
+    border: 1px solid black;
+    margin-bottom: 25px;
+    height: 32px;
+    color: black;
+    width: 470px;
+    margin-left: 40px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.addidea2::placeholder {
+    color: rgba(0, 0, 0, 0.587);
+}
+
+.addidea3 {
+    border: 1px solid black;
+    margin-bottom: 20px;
+    height: 10px;
+    color: black;
+    width: 450px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.addidea3::placeholder {
+    color: rgba(0, 0, 0, 0.587);
+}
+
+.modalsubmit {
+    margin-top: 20px;
+}
+
+.modalsubmit:hover {
+    margin-top: 20px;
+}
+
+.username {
+    width: 400px;
+
+}
+
+.username2 {
+    color: rgba(255, 255, 255, 0.593);
+    font-size: 14px;
+
+}
+
+.trashicon {
+    color: white;
+    display: block;
+}
+
+.comment-section {
+    margin-top: 30px;
+}
+
+.commentsheading {
+    font-size: 22px !important;
+    border-bottom: 2px solid white;
+    padding-bottom: 5px;
+}
+
+.onecomment {
+    padding: 5px;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.comment-content {
+    font-size: 16px !important;
+}
+
+.commentbywhom {
+    color: rgba(255, 255, 255, 0.581) !important;
+    padding-bottom: 5px;
+
+}
+
+.onecomment:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.06)
+}
+
+.commentbutton {
+    width: 80px;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-left: 15px;
+    margin-top: 5px;
+    background-color: #05475b;
+}
+
+.commentbutton:hover {
+    width: 80px;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-left: 15px;
+    margin-top: 5px;
+    background-color: #043240;
+
+}

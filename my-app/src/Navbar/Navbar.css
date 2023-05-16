@@ -1,0 +1,232 @@
+*{
+    margin: 0;
+}
+a{
+    text-decoration: none;
+    color: #fff;
+    padding: 10px 20px 10px 20px ;
+    border-radius: 10px;
+    font-size: larger;
+}
+li{
+    list-style: none;
+    display: inline;
+    padding: 0px;
+    width: 150px;
+    text-align: center;
+    height: 30px;
+
+}
+
+header{
+    margin: 0%;
+    height: 90px;
+    /* background-color: rgba(255, 255, 255, 0.833); */
+}
+.navbar-main{
+    margin-right: 0px;
+    margin-top: 40px;
+    margin-left: 0px;
+    text-align: right;
+    display: flex;
+    justify-content: right;
+}
+.main-heading{
+    display: inline-block;
+    padding-left: 30px;
+    align-content: center;
+    margin-top: 60px;
+    padding-right: 180px;
+    margin-left: 30px;
+    padding-top: 5px;
+}
+.headingimg h1{
+    position: relative;
+    bottom: 30px;
+    color: #fff;
+}
+.headingimg{
+    display: flex;
+    
+    justify-content: right;
+}
+.headingimg .main-heading{
+    display: flex;
+    
+    justify-content: left;
+}
+header{
+    
+}
+a:hover{
+    color: rgb(247, 247, 170);
+}
+.Home{
+    color: rgb(247, 247, 170);
+}
+.firstchar{
+    font-size: 25px;
+    color: rgb(247, 247, 170);
+    border-radius: 50%;
+    padding: 10px;
+    background-color: rgba(75, 75, 75, 0.062);
+    border: 1px solid #fff;
+    width: 20px;
+    height: 20px;
+    margin-top: 28px;
+    padding-top: 5px;
+    padding-bottom: 13px;
+    margin-left: 0px;
+    padding-left: 12px;
+}
+.firstchar:hover{
+    border: 1px solid rgb(247, 247, 170) ;
+    color: #fff;
+
+
+}
+.abc2{
+    display: flex;
+    justify-content: right;
+    margin-right: 30px;
+    
+}
+.dropdownmenu {
+    display: none;
+    position: absolute;
+    background-color: white;
+    text-align: center;
+    min-width: 100px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    margin-right: 0px;
+    margin-top: 75px;
+    border-radius: 5px;
+}
+.logout{
+    color: black;
+    font-size: medium;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+.userprofile{
+    color: black;
+    font-size: medium;
+    padding-bottom: 8px;
+    padding-top: 8px;
+}
+.userprofile:hover {
+    background-color: #ddd;
+    color: black;
+    border-radius: 5px;
+}
+.logout:hover {
+    background-color: #ddd;
+    color: black;
+    border-radius: 5px;
+}
+.dropdownmain:hover .dropdownmenu{display: block;}
+
+.dropdownmenu:hover .firstchar{
+    background-color: white;
+    border: 1px solid #03414a;
+}
+
+.dropdownmain{
+    display: flex;
+    /* margin-left: 10px; */
+    height: 80px;
+}
+.navtopmostdiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background: radial-gradient(#cfd9df, #e2ebf0); */
+    background: linear-gradient(to bottom right, #0B2447, #57BC90);
+    background-size: cover; 
+    background-position: center center; 
+    background-repeat: no-repeat; 
+    background-attachment: fixed;
+}
+.messageicon{
+    color: rgb(247, 247, 170);
+    margin-left: 30px;
+    margin-top: 35px;
+    position: relative;
+    font-size: large;
+    border: 1px solid white;
+    padding: 5px;
+    border-radius: 10px;
+}
+.modaltable{
+    color: black;
+    border-bottom: 2px solid black;
+    padding: 0px;
+    padding-right: 60px;
+    padding-left: 60px;
+    padding-top: 5px;
+}
+.modaltable2{
+    color: black;
+}
+.iconatag2{
+    display: flex;
+    color: white;
+    margin: 6px;
+    width: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
+    height: 25px;
+    border-radius: 0;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background-color: blue;
+    border: 1px solid blue;
+}
+.iconatag2:hover{
+    display: flex;
+    color: blue;
+    margin: 6px;
+    width: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
+    height: 25px;
+    border-radius: 0;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border: 1px solid blue;
+
+}
+.actionicons2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.iconatag2:hover{
+    color: blue;
+}
+.remarkinput{
+    text-align: center;
+    width: 300px;
+
+}
+.remarkinputdiv{
+    text-align: center;
+}
+.remarkheading{
+    text-align: center;
+    margin-bottom: 10px;
+}
+.remarkbuttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+.active{
+    color: rgb(247, 247, 170);
+}
