@@ -24,7 +24,7 @@
 }
 
 .homeimg {
-    width: 500px;
+    width: 450px;
     margin-left: 150px;
     margin-top: 50px;
     margin-bottom: 100px;
@@ -108,7 +108,7 @@
     transform: translateY(-10px);
 }
 
-.container1 {
+.containers1 {
     text-align: center;
     align-items: center;
     justify-content: center;

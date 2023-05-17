@@ -82,28 +82,37 @@ server.post('/login', cors({ exposedHeaders: ['Token'] }),
                     } catch (error) {
                         if (ress['temppassword'] == password) {
                             res.send('700')
+                            return
                         }
                         else {
                             res.send('400')
+                            return
                         }
                     }
                     if (passwordmatch) {
                         if (ress['userVerified'] === '0') {
                             res.send('404')
+                            return
                         } else {
                             const token = await tokengenerate(ress['_id'])
                             console.log('-----token generated-----', token);
                             res.set('Token', token);
                             res.send(ress)
+                            return
                         }
-                    } else { res.send('400') }
+                    } else { 
+                        res.send('400') 
+                        return 
+                    }
                 } else {
                     res.sendStatus(400)
+                    return
                 }
             })
         } catch (error) {
             console.log(error);
-            res.send(400)
+            res.sendStatus(400)
+            return
         }
     })
 
@@ -322,6 +331,15 @@ server.post('/fileupload', upload.single(), async (req, res) => {
                 if (filedata.data[i].action === 'c' || filedata.data[i].action === 'C') {
                     if (filedata.data[i].password) {
                         filedata.data[i].password = await bcrypt.hash(filedata.data[i].password, 10)
+                        filedata.data[i].createdBY = "By Upload (Admin)";
+                        filedata.data[i].createdAT = Date();
+                        filedata.data[i].deletedAT = "null";
+                        filedata.data[i].updatedAT = '';
+                        filedata.data[i].updatedBY = '';
+                        filedata.data[i].userVerified = '1';
+                        filedata.data[i].remarks = 'Created through upload';
+                        filedata.data[i].remarks = 'Created through upload';
+                        filedata.data[i].temppassword = '';
                         var result = await client.db("my-app").collection("userdata").insertOne(filedata.data[i])
                     }
                     else {
@@ -349,6 +367,17 @@ server.post('/fileupload', upload.single(), async (req, res) => {
                 else {
 
                     try {
+
+                        filedata.data[i].password = await bcrypt.hash(filedata.data[i].password, 10)
+                        filedata.data[i].createdBY = "By Upload (Admin)";
+                        filedata.data[i].createdAT = Date();
+                        filedata.data[i].deletedAT = "null";
+                        filedata.data[i].updatedAT = '';
+                        filedata.data[i].updatedBY = '';
+                        filedata.data[i].userVerified = '1';
+                        filedata.data[i].remarks = 'Created through upload';
+                        filedata.data[i].remarks = 'Created through upload';
+                        filedata.data[i].temppassword = '';
                         var result = await client.db("my-app").collection("userdata").insertOne(filedata.data[i])
 
                     } catch (error) {
@@ -400,7 +429,7 @@ server.get('/roles', async (req, res) => {
 server.post('/signup', async (req, res) => {
     try {
 
-        const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+';
+        const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#';
         let password = '';
         for (let i = 0; i < 6; i++) {
             password += alphabet.charAt(crypto.randomInt(alphabet.length));
@@ -413,6 +442,7 @@ server.post('/signup', async (req, res) => {
         req.body.updatedBY = null
         req.body.updatedAT = null
         req.body.userVerified = '0'
+        req.body.action = ''
         let a = await client.db('my-app').collection('roles').find({}).toArray();
 
         console.log(req.body);
@@ -455,7 +485,6 @@ server.post('/signup', async (req, res) => {
                     <li>Contact: ${req.body.contact}</li>
                     <li>Role: ${rolestring}</li>
                 </ul>
-                <br>
                 <p>Please wait until the admin approves you</p>
                 <p>you will receive a mail with temporary credentials as soon as admin approves you</p>`
             };
@@ -474,15 +503,52 @@ server.post('/signup', async (req, res) => {
 server.post('/adduser', async (req, res) => {
     try {
 
+        const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#';
+        let password = '';
+        for (let i = 0; i < 6; i++) {
+            password += alphabet.charAt(crypto.randomInt(alphabet.length));
+        }
+
         req.body.createdAT = Date()
         req.body.deletedAT = null
         req.body.updatedBY = null
         req.body.updatedAT = null
+        req.body.userVerified = '1'
+        req.body.action = ''
+        req.body.temppassword = password
+        req.body.remarks = ''
+
         console.log(req.body);
         await createuser(client, req.body).then((ress) => {
             //console.log("db ------------res-",ress);
             res.send(ress)
         })
+
+        try {
+        const userdetail = {
+            _id: req.body._id
+        }
+        console.log(userdetail)
+        var result = await client.db("my-app").collection("userdata").findOne(userdetail)
+        console.log("resssuuulllttt-------------", result);
+        message.to = result._id
+        message.subject = "Admin Approval"
+        message.html = `<p>Hello User,</p>
+            <p>Admin has added you to the portal</p>
+            <p>Use this Credentials to login into portal:</p>
+            <ul>
+                <li>Username : ${result._id}</li>
+                <li>Temporary-Password : ${result.temppassword}</li>
+            </ul>
+            <br>
+            <p>*Change the password once you have logged in (Password can only be used once)</p>`
+        sendemail(message)
+    }
+    catch (error) {
+
+    }
+
+
     }
     catch (error) {
         console.log("db error2-------------", error);
@@ -490,6 +556,8 @@ server.post('/adduser', async (req, res) => {
     }
 
 })
+
+
 server.post('/ideapost', async (req, res) => {
     try {
         console.log("body-----", req.body);
@@ -507,6 +575,7 @@ server.post('/ideapost', async (req, res) => {
         res.sendStatus(400);
     }
 });
+
 
 server.post('/likepost', async (req, res) => {
     try {
@@ -537,6 +606,7 @@ server.post('/likepost', async (req, res) => {
         res.sendStatus(400);
     }
 })
+
 
 server.post('/newrolecreate', async (req, res) => {
     try {

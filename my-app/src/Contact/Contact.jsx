@@ -1,5 +1,4 @@
 import './Contact.css';
-import Navbar from '../Navbar/Navbar';
 import { useEffect } from 'react';
 import React, { useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
@@ -17,56 +16,61 @@ export default function Contact() {
   const [name, setName] = useState('');
   const [contact, setContact] = useState('');
   const [emailpass, setEmailpass] = useState(false);
-  const [message, setMessage] = useState('');
+  const[message, setMessage] = useState('');
 
-
+  
   const messagedata = {
     _id: email,
     name: name,
     contact: parseInt(contact),
     message: message,
-  };
+};
 
 
-  const send = async (e) => {
+const send = async (e) => {
     e.preventDefault();
-    try {
-      await fetch('http://localhost:8080/sendquerymail', {
-        method: 'POST',
-        body: JSON.stringify(messagedata),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      }).then((res) => {
-        console.log("--------------", res);
-        if (res.status === 200) {
-          toast.success('Message sent !', {
-            position: toast.POSITION.TOP_CENTER,
-            autoClose: 1000,
-          })
-          setEmail('');
-          setName('');
-          setContact('');
-          setMessage('');
+    if (name && contact && message && email != ''){
+        try {
+            await fetch('http://localhost:8080/sendquerymail', {
+                method: 'POST',
+                body: JSON.stringify(messagedata),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then((res) => {
+                console.log("--------------", res);
+                if (res.status === 200) {
+                    toast.success('Message sent !', {
+                        position: toast.POSITION.TOP_CENTER,
+                        autoClose: 1000,
+                    })
+                    setEmail('');
+                    setName('');
+                    setContact('');
+                    setMessage('');
 
-          setTimeout(1000)
-        } else if (res.status === 400) {
-          toast.error('Failed to deliver your message', {
+                    setTimeout(1000)
+                } else if (res.status === 400) {
+                    toast.error('Failed to deliver your message', {
+                        position: toast.POSITION.TOP_CENTER,
+                        autoClose: 2000,
+                    })
+                }
+
+            })
+        } catch (error) {
+            console.log("------------error", error);
+        }
+      }
+      else {
+        console.log("errorrrrrrrrrrrrrrrrrrrrr")
+        toast.error('Fill all the details properly', {
             position: toast.POSITION.TOP_CENTER,
             autoClose: 2000,
-          })
-        }
-
-      })
-    } catch (error) {
-      console.log("------------error", error);
+        })
     }
 
-
-
-  };
-
-
+};
 
   return (
     <div className='class' >
@@ -95,9 +99,7 @@ export default function Contact() {
           </div>
           <div className='right-side'>
             <form className="myForm3">
-
               <h1 className='ping'>Ping Us !</h1>
-
               <div className='form_input1'>
                 <input
                   type="text"
@@ -108,7 +110,6 @@ export default function Contact() {
                   onChange={(event) => setName(event.target.value)}
                 />
               </div>
-
               <div className='form_input1'>
                 <input
                   type="email"
@@ -119,9 +120,6 @@ export default function Contact() {
                   onChange={(event) => setEmail(event.target.value)}
                 />
               </div>
-
-
-
               <div className='form_input1'>
                 <input
                   type="tel"
@@ -132,7 +130,6 @@ export default function Contact() {
                   onChange={(event) => setContact(event.target.value)}
                 />
               </div>
-
               <div className='form_input1'>
                 <textarea
                   type="address"
@@ -146,18 +143,15 @@ export default function Contact() {
               <div className="button" >
                 <button className='submitB'
                   type="button"
-
                   onClick={send}>SUBMIT
                 </button>
               </div>
-
+            
             </form>
             <ToastContainer />
-
           </div>
         </div>
       </div>
-
     </div>
   );
 }

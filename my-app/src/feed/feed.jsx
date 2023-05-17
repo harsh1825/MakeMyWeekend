@@ -42,20 +42,16 @@ export default function Feed(props) {
     const id = localStorage.getItem("userid")
     const username = localStorage.getItem("username")
     const isUserAdmin = localStorage.getItem('userrole') === '6440c13146465b84798eca3f'
-
     const token = localStorage.getItem('JWT')
-    const [likes, setLikes] = useState();
     const [likedPosts, setLikedPosts] = useState([]);
-
     const [selectedCity, setSelectedCity] = useState("");
     const [idea, setidea] = useState("");
     const [costpp, setcostpp] = useState("");
     const [data, setdata] = useState();
-    const [category, setcategory] = useState();
+    const [category, setcategory] = useState('');
     const [showComments, setShowComments] = useState(false);
     const [Comment, setComment] = useState();
     const [searchstring, setsearchstring] = useState("");
-
 
 
     let post = {
@@ -64,7 +60,9 @@ export default function Feed(props) {
         idea: idea,
         category: category,
         city: selectedCity,
-        costpp: costpp
+        costpp: costpp,
+        comments:[],
+        likedBY:[]
     }
 
     var searchdata = {
@@ -108,10 +106,6 @@ export default function Feed(props) {
 
 
 
-    useEffect(() => {
-        console.log("called");
-        fetchData();
-    }, []);
     const fetchData = async () => {
         try {
             let response = await fetch('http://localhost:8080/getposts', {
@@ -120,20 +114,30 @@ export default function Feed(props) {
                     'Content-Type': 'application/json',
                     'Authorization': `${token}`,
                     'Email': `${id}`
-
                 }
-            })
-            let responses = await response.json();
-            const likedPosts = responses.map(post => post.likedBY.includes(id) ? post._id : null).filter(Boolean);
-            setdata(responses)
+            });
+            const responses = await response.json();
+            console.log("responses:",responses);
+            const likedPosts = responses?.map(post => post.likedBY.includes(id) ? post._id : null).filter(Boolean);
+            setdata(responses);
             setLikedPosts(likedPosts);
-
         } catch (error) {
             console.error(error);
         }
     };
-    console.log("likes--------", likes)
+    
+    useEffect(() => {
+        console.log("called");
+        fetchData();
+    }, []);
+
+    console.log('data===========>', data);
+
+
+
     const submit = async () => {
+
+        if(idea && selectedCity && costpp && category != null || ""){
         try {
             await fetch('http://localhost:8080/ideapost', {
                 method: 'POST',
@@ -161,6 +165,13 @@ export default function Feed(props) {
         }
         // console.log(detail);
         closeModal()
+    }
+    else{
+        toast.error("fields cannot be empty", {
+            position: toast.POSITION.TOP_CENTER,
+            autoClose: 2000,
+        })
+    }
     }
 
 
@@ -281,7 +292,6 @@ export default function Feed(props) {
             console.error(error);
         }
 
-
     };
     return (
         <div className='feedtopdiv'>
@@ -308,7 +318,7 @@ export default function Feed(props) {
             </div>
             <div className="small-container2">
                 <div className="row">
-                    {data?.map((post, index) => (
+                    {data?.map((post) => (
                         <div className="col-4" key={post._id}>
                             <span className='username2'>{post.category}</span>
                             <h4 className='outerproducttitle'>{post.idea}</h4>

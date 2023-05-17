@@ -28,7 +28,7 @@ export default function About() {
             <div className="aboutmain">
                 <div>
                     <div className='container1'>
-                        <span className='heading'>Discover Your <span className='perfectweekend'>Perfect Weekend</span></span>
+                        <span className='heading'>Discover Your <span className='ab'>Perfect Weekend </span></span>
                         <h3 className='bottom'>Unleashing Memorable Experiences</h3>
                     </div>
                     <p className='content'>Lorem ipsum dolor sit amet consectetur adipisicing elit.

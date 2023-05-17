@@ -70,7 +70,7 @@ export default function Homepage() {
                     
                 </div>
                 <div className="testimonial">
-                    <div className="container1">
+                    <div className="containers1">
                         <div className="row1">
                             <div className="cols-3">
                                 <p>"I absolutely love the forum website! It's the perfect platform to share and discover amazing weekend ideas.

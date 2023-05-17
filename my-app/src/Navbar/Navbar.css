@@ -212,6 +212,8 @@ a:hover{
 .remarkinput{
     text-align: center;
     width: 300px;
+    color: black;
+    border-bottom: solid 2px black;
 
 }
 .remarkinputdiv{
