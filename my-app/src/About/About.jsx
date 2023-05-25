@@ -31,14 +31,10 @@ export default function About() {
                         <span className='heading'>Discover Your <span className='ab'>Perfect Weekend </span></span>
                         <h3 className='bottom'>Unleashing Memorable Experiences</h3>
                     </div>
-                    <p className='content'>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Doloribus vel quos eveniet repudiandae
-                        dolorem modi neque autem, nulla quaerat optio itaque nam,
-                        perferendis ex earum explicabo rerum voluptates, nisi eaque.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Doloribus vel quos eveniet repudiandae
-                        dolorem modi neque autem, nulla quaerat optio itaque nam,
-                        perferendis ex earum explicabo rerum voluptates, nisi eaque.</p>
+                    <p className='content'>MakeMyWeekend is a vibrant online community dedicated to bringing together weekend enthusiasts like you. We believe that the best recommendations come from real people who have experienced and enjoyed incredible weekends firsthand. That's why we created this platform – to provide a space for you to share your favorite weekend ideas and discover inspiration from others.
+                    <br /> <br />
+
+                        Our platform is built upon the collective wisdom and diverse perspectives of our community members. Whether you're an adventure seeker, a culture connoisseur, or someone who simply enjoys a relaxing weekend getaway, you'll find a wealth of ideas and recommendations here.</p>
                     <button className='aboutbtn' onClick={navigates} >Get More Info</button>
                 </div>
                 <img src='\assets\images\about.png' className='aboutimg' alt="Hello" />
@@ -53,13 +49,13 @@ export default function About() {
                             <div class="team-image">
                                 <img src="\assets\images\123.jpg" />
                                 <p class="description">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent urna diam, maximus ut ullamcorper quis, placerat id eros. Duis semper justo sed condimentum rutrum. Nunc tristique purus turpis. Maecenas vulputate.
+                                As a dedicated adventurer at heart, I am committed to helping you uncover extraordinary weekend experiences that ignite your sense of wonder and create lasting memories.
                                 </p>
                                 <ul class="social">
-                                    <li><a href="#"><FaLinkedin /></a></li>
-                                    <li><a href="#"><FaTwitter /></a></li>
+                                    <li><a href="https://www.linkedin.com/in/harshparekh5818/?originalSubdomain=in"><FaLinkedin /></a></li>
+                                    <li><a href="https://twitter.com/harshparekh185/"><FaTwitter /></a></li>
                                     <li><a href="#"><FaFacebookSquare /></a></li>
-                                    <li><a href="#"><FaInstagram /></a></li>
+                                    <li><a href="https://www.instagram.com/harsh_.parekh/"><FaInstagram /></a></li>
                                 </ul>
                             </div>
                             <div class="team-info">
@@ -74,13 +70,12 @@ export default function About() {
                             <div class="team-image">
                                 <img src="\assets\images\f9.jpg" />
                                 <p class="description">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent urna diam, maximus ut ullamcorper quis, placerat id eros. Duis semper justo sed condimentum rutrum. Nunc tristique purus turpis. Maecenas vulputate.
-                                </p>
+                                With a deep passion for exploration and a knack for curating the finest recommendations, I am thrilled to share my insights and inspire you to embark on remarkable weekend journeys.                                </p>
                                 <ul class="social">
-                                    <li><a href="#"><FaLinkedin /></a></li>
+                                    <li><a href="https://www.linkedin.com/in/krishavora/?originalSubdomain=in"><FaLinkedin /></a></li>
                                     <li><a href="#"><FaTwitter /></a></li>
                                     <li><a href="#"><FaFacebookSquare /></a></li>
-                                    <li><a href="#"><FaInstagram /></a></li>
+                                    <li><a href="https://www.instagram.com/krisha_vora_/"><FaInstagram /></a></li>
                                 </ul>
                             </div>
                             <div class="team-info">
@@ -92,7 +87,7 @@ export default function About() {
                 </div>
             </div>
             <div ref={teamRef}>
-            <Contact />
+                <Contact />
             </div>
             <Footer />
         </div>

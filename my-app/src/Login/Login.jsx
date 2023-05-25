@@ -166,19 +166,15 @@ export default function Login() {
         setErr("")
         event.preventDefault();
 
-        if (!percnfpassword) {
+        if (!percnfpassword || percnfpassword != perpassword) {
             //console.log('CnfPassword');
-            setErr("Enter password again")
-            return
-        }
-        if (percnfpassword != perpassword) {
-            //console.log('password matching');
             setErr("Password does not matches");
             isPasswordMatches(false)
             return
-
         }
+        
         isPasswordMatches(true)
+        
     }
 
     const signup = () => {
@@ -194,6 +190,20 @@ export default function Login() {
         if (Object.values(perpassword).every((value) => value === null) ||
             Object.values(percnfpassword).every((value) => value === null)) {
             toast.warning("Fields can not be Empty", {
+                position: toast.POSITION.TOP_CENTER,
+                autoClose: 1000,
+                className: "toast_msg"
+            })
+        }
+        else if(percnfpassword != perpassword){
+            toast.error("Password does not match", {
+                position: toast.POSITION.TOP_CENTER,
+                autoClose: 1000,
+                className: "toast_msg"
+            })
+        }
+        else if(perr != ""){
+            toast.error("Enter Proper password", {
                 position: toast.POSITION.TOP_CENTER,
                 autoClose: 1000,
                 className: "toast_msg"

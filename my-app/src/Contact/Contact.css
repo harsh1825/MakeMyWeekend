@@ -50,8 +50,8 @@
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  
-  
+
+
 
 }
 
@@ -71,7 +71,7 @@
   font-size: 15px;
   color: #fff;
   margin-bottom: 25px;
-  
+
 }
 
 .head {
@@ -124,50 +124,52 @@
   height: 500px;
 }
 
-.flex{
+.flex {
   display: flex;
   justify-content: center;
   text-align: center;
 }
 
-.myForm3{
-  
+.myForm3 {
+
   width: 400px;
   bottom: 5%;
   position: relative;
   padding-bottom: 40px;
   padding-left: 20px;
   padding-right: 20px;
-  
+
 }
 
-.submitB{
+.submitB {
   background: #05475b;
 
 }
-.submitB:hover{
+
+.submitB:hover {
   background: #043240;
 
 }
 
-.message{
-   width: 314px;
+.message-9 {
+  width: 314px;
   height: 120px;
   padding: 10px;
   border: none;
-  border-bottom: 2px solid white;
   border-radius: 0px;
+  border-bottom: 2px solid white;
   background-color: transparent;
   color: white;
   width: 300px;
   resize: none;
 }
 
-.form_input1{
+.form_input1 {
   margin-top: 30px;
   margin-bottom: 30px;
+
 }
 
-.ping{
+.ping {
   margin-top: 100px;
 }

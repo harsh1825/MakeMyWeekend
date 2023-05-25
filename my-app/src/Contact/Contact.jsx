@@ -134,7 +134,7 @@ const send = async (e) => {
                 <textarea
                   type="address"
                   name="message"
-                  className='message'
+                  className='message-9'
                   value={message}
                   placeholder="Write to us"
                   onChange={(event) => setMessage(event.target.value)}

@@ -1,9 +1,9 @@
 import Navbar from '../Navbar/Navbar'
 import Footer from '../footer/footer'
-import './feed.css'
+import './MyPosts.css'
+import cities from './cities.json';
 import Modal from 'react-modal';
 import React, { useState } from "react";
-import cities from './cities.json';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useEffect } from 'react';
@@ -11,9 +11,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons';
 import { FaComment, FaPlus, FaTrash } from 'react-icons/fa';
-import $ from 'jquery';
 import ReactPaginate from 'react-paginate';
-
 
 
 cities.sort((a, b) => a.name.localeCompare(b.name));
@@ -21,7 +19,7 @@ cities.sort((a, b) => a.name.localeCompare(b.name));
 
 const customStyles = {
     overlay: {
-        backgroundColor: 'rgba(0, 0, 0, 0.5)' // sets the background color of the overlay
+        backgroundColor: 'rgba(0, 0, 0, 0.5)'
     },
     content: {
         top: '50%',
@@ -38,12 +36,12 @@ const customStyles = {
     },
 };
 
-export default function Feed(props) {
+export default function MyPosts(props) {
+
     const [secondmodalIsOpen, setsecondIsOpen] = useState(false);
     let subtitle;
     const id = localStorage.getItem("userid")
     const username = localStorage.getItem("username")
-    const isUserAdmin = localStorage.getItem('userrole') === '6440c13146465b84798eca3f'
     const token = localStorage.getItem('JWT')
     const [likedPosts, setLikedPosts] = useState([]);
     const [selectedCity, setSelectedCity] = useState("");
@@ -53,16 +51,12 @@ export default function Feed(props) {
     const [category, setcategory] = useState('');
     const [showComments, setShowComments] = useState(false);
     const [Comment, setComment] = useState();
-    const [searchstring, setsearchstring] = useState("");
+    const [slicedData, setSlicedData] = useState([]);
     const [sortBy, setSortBy] = useState('default');
-    const [posts, setPosts] = useState([]);
     const [pageNumber, setPageNumber] = useState("");
-
-
-    const usersPerPage = 10;
+    
+    const usersPerPage = 5;
     let startIndex = pageNumber * usersPerPage;
-
-
     let post = {
         postBY: username,
         postID: id,
@@ -73,10 +67,6 @@ export default function Feed(props) {
         comments: [],
         likedBY: []
     }
-
-    var searchdata = {
-        city: { $regex: searchstring, $options: "i" }
-    };
 
     const handleLike = async (postId) => {
         try {
@@ -114,7 +104,6 @@ export default function Feed(props) {
     };
 
 
-
     const fetchData = async () => {
         try {
             let response = await fetch('http://localhost:8080/getposts', {
@@ -126,9 +115,14 @@ export default function Feed(props) {
                 }
             });
             const responses = await response.json();
-            console.log("responses:", responses);
-            const likedPosts = responses?.map(post => post.likedBY.includes(id) ? post._id : null).filter(Boolean);
-            setdata(responses);
+            //console.log("responses:", responses);
+
+            // Filter posts by the logged-in user
+            const filteredPosts = responses.filter(post => post.postID === id);
+            console.log("Here......................",filteredPosts);
+
+            const likedPosts = filteredPosts.map(post => post.likedBY.includes(id) ? post._id : null).filter(Boolean);
+            setdata(filteredPosts);
             setLikedPosts(likedPosts);
         } catch (error) {
             console.error(error);
@@ -136,42 +130,8 @@ export default function Feed(props) {
     };
 
     useEffect(() => {
-        console.log("called");
         fetchData();
     }, []);
-
-    console.log('data===========>', data);
-
-    const sortPosts = () => {
-        let sortedPosts = [...data];
-        switch (sortBy) {
-            case 'price':
-                sortedPosts.sort((a, b) => {
-                    const costA = parseInt(a.costpp.split('-')[0]);
-                    const costB = parseInt(b.costpp.split('-')[0]);
-                    return costA - costB;
-                });
-                break;
-            case 'popularity':
-                sortedPosts.sort((a, b) => b.likedBY.length - a.likedBY.length);
-                break;
-            case 'comments':
-                sortedPosts.sort((a, b) => b.comments.length - a.comments.length);
-                break;
-            default:
-                sortedPosts.sort(() => Math.random() - 0.5);
-                break;
-        }
-        
-        console.log("sorted posts-----", sortedPosts);
-
-        setdata(sortedPosts);
-    };
-
-    useEffect(() => {
-        sortPosts();
-        console.log("calllllllll");
-    }, [sortBy]);
 
 
     const submit = async () => {
@@ -219,7 +179,6 @@ export default function Feed(props) {
     }
 
     function afterOpenModal() {
-        // references are now sync'd and can be accessed.
         subtitle.style.color = '#000';
     }
 
@@ -264,6 +223,7 @@ export default function Feed(props) {
         }
 
     }
+
     const comment = async (postid) => {
         console.log("inside");
         const detail = {
@@ -309,55 +269,22 @@ export default function Feed(props) {
 
     }
 
-    const search = async () => {
 
-        // console.log("----------", searchdata);
-
-        try {
-            $.ajax({
-                type: "POST",
-                url: "http://localhost:8080/searchedcity",
-                data: JSON.stringify({ searchdata }),
-                headers: {
-                    'Authorization': `${token}`
-                },
-                contentType: "application/json",
-                success: function (response) {
-                    console.log("----search response-----", response);
-                    setdata(response);
-                }
-            });
-        } catch (error) {
-            console.error(error);
-        }
-
-    };
     return (
         <div className='feedtopdiv'>
             <Navbar />
             <div className="small-container">
                 <div className="row row-2">
-                    <h2 className='weekendideas'>Weekend Ideas</h2>
-                    <input
-                        type="text"
-                        className="search2"
-                        placeholder="Search City"
-                        value={searchstring}
-                        onChange={(event) => setsearchstring(event.target.value)}
-                        onKeyUp={search}
-                    />
-                    <select className='topsort' value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
-                        <option value="default" className='topsort2'>Sort By Default</option>
-                        <option value="price" className='topsort2'>Sort By Price</option>
-                        <option value="popularity" className='topsort2'>Sort By Popularity</option>
-                        <option value="comments" className='topsort2'>Sort By Comments</option>
-                    </select>
+                    <h2 className='myposts'>My Posts</h2>
+
+
+
                     <button className='postidea' onClick={opensecondModal}><FaPlus /> POST</button>
                 </div>
             </div>
             <div className="small-container2">
                 <div className="row">
-                    {data?.slice(startIndex, startIndex + usersPerPage).map((post) => (
+                    {data.slice(startIndex, startIndex + usersPerPage).map((post) => (
                         <div className="col-4" key={post._id}>
                             <span className='username2'>{post.category}</span>
                             <h4 className='outerproducttitle'>{post.idea}</h4>
@@ -368,7 +295,7 @@ export default function Feed(props) {
                                     <p className='price'>₹{post.costpp}/P</p>
                                 </div>
                                 <div className='feedicons'>
-                                    {isUserAdmin && <FaTrash className='trashicon' onClick={() => deletepost(post._id)} />}
+                                    <FaTrash className='trashicon' onClick={() => deletepost(post._id)} />
                                     <FontAwesomeIcon
                                         icon={likedPosts.includes(post._id) ? solidHeart : regularHeart}
                                         style={likedPosts.includes(post._id) ? { color: 'red' } : {}}
@@ -488,6 +415,7 @@ export default function Feed(props) {
                 />
 
             </div>
+
             <Footer />
             <ToastContainer />
         </div>

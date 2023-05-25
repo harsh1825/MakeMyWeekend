@@ -16,6 +16,7 @@ import Userprofile from './Users/userprofile/userprofile';
 import Createrole from './Users/createrole/createrole';
 import ForgetPassword from './Login/forgotPassword/forgotPassword';
 import Feed from './feed/feed';
+import MyPosts from './MyPosts/MyPosts';
 
 
 
@@ -47,6 +48,7 @@ export default function Main() {
             <Route path="/Users/userprofile" element={<Userprofile />} />
             <Route path="/Login/forgotPassword/forgotPassword" element={<ForgetPassword />} />
             <Route path="/feed/feed" element={<Feed />} />
+            <Route path="/MyPosts/MyPosts" element={<MyPosts />} />
           </Routes>
         }
       </BrowserRouter>

@@ -276,7 +276,7 @@ function Navbar() {
                             <ul className='navbar-main'>
                                 <li><NavLink to="/Homepage/Homepage" ClassName="active">Home</NavLink></li>
                                 <li><NavLink to="/feed/feed" ClassName="active">Feed</NavLink></li>
-                                <li><NavLink to="/jhgfdsa" ClassName="active">My Posts</NavLink></li>
+                                <li><NavLink to="/MyPosts/MyPosts" ClassName="active">My Posts</NavLink></li>
                                 <li><NavLink to="/Users/List/User" ClassName="active">Users</NavLink></li>
                                 <li><NavLink to="/About/About" ClassName="active">About</NavLink></li>
 
